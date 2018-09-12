@@ -34,7 +34,7 @@
 //  this.someData = response.body;
            console.log(response.body);   
 })
-        }, 100)
+        }, 350)
   }
 export default {
   name: 'App',

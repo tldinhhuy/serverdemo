@@ -3,13 +3,33 @@ var colors = require('colors');
 var express = require('express');
 const { urlencoded } = require('body-parser');
 const Buffer  = require('buffer');
+var _underscore = require('underscore');
 
 var bodyParser = require('body-parser');
 var server = net.createServer();
 var app = express();
 
 var changes = [];
-var newData = [true, 123];
+const newData = initLocalMemory();
+
+function initLocalMemory() {
+  const arr = [];
+
+  return {
+    add: function(data) {
+      arr.push(data);
+    },
+    give: function() {
+      return [].concat(arr);
+    },
+    clear: function() {
+      let amount = arr.length;
+      for( let i = 0; i< amount; i++) {
+        arr.pop();
+      }
+    },
+  }
+}
 
 app.use(bodyParser.json());
 
@@ -18,13 +38,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/getData', (req, res) => {
-    if(newData.length){
-        let d = newData;
-        newData = [];
+    if(newData.give().length){
+        let d = newData.give();
+        newData.clear();
+        console.log('New Data', newData.give());
         res.status(200).send({data: d});
         
     } else {
-        res.send(304);
+        res.send(200);
     }
 });
 
@@ -35,6 +56,9 @@ app.post('/someUrl', (req, res) => {
     changes.push(message)
 
 });
+//let bitList = message.split(' ').filter(i => i !== '').map(e=> +('0x'+e));
+let someIndexData = 0;
+setInterval( ()=> newData.add('TXT txt'+ someIndexData++) , 10000);
 
 server.on("connection", (socket) => {
     var remoteAddress = socket.remoteAddress + ":" + socket.remotePort;
@@ -44,13 +68,13 @@ server.on("connection", (socket) => {
         let str = `Data from ${remoteAddress} ${d}`;
         console.log('Data from %s: %s'.cyan, remoteAddress, d);
         if(changes.length){
-            socket.write(changes.shift())
+            socket.write(changes.shift());
         }
-        newData.push(str);
+        newData.add(str);
     });
 
     socket.once("close", () =>{
-        console.log('Connection from %s closed'.yellow, remoteAddress);
+        console.log('Connection  %s closed'.yellow, remoteAddress);
     });
 
     socket.on("error", (err) =>{
