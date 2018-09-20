@@ -55,19 +55,9 @@ app.get('/getData', (req, res) => {
 
 app.post('/someUrl', (req, res) => {
     res.send(200);
-    let message = req.body.message;
-    let idx = message.indexOf('<cr>');
-    if (~idx) {
-	message = message.slice(0,idx);
-}
-	console.log('MESSAGE: ', message, idx);
-    message = Buffer.from(message, 'ascii');
-    if(~idx){
-	let cr = Buffer.from([13]);
-	message =  Buffer.concat([message, cr], message.length + cr.length);
-} 
+    const  message = Buffer.from(req.body.message, 'ascii');
     console.log('some URL', message);
-    changes.push(message.toString('ascii'));
+    changes.push(message)
 
 });
 //let bitList = message.split(' ').filter(i => i !== '').map(e=> +('0x'+e));

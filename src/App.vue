@@ -9,7 +9,7 @@
             </div>            
       </form>
       <button class="btn btn-outline-danger" v-on:click="stop()">Stop</button>
-      <button class="btn btn-outline-warning" v-on:click="continuerequest()">Continue</button>
+      <button class="btn btn-outline-warning" v-on:click="continuerequest()">Show</button>
       <p>Message is: {{ message }}</p>
       <ul>
         <li v-for="d in data" :key="d.id">{{d.view}}</li>
