@@ -1,6 +1,72 @@
 <template>
   <div>
-      <form class = "formstyle" v-on:submit.prevent="send()">
+<div class="container-fluid">
+ <div class="row bkheader">
+  <div class="col-xs-3 col-sm-2">
+   <img src="./assets/LogoBK.png" class="w100" alt="">
+  </div>
+  <div class="col-xs-9 col-sm-10 flex-center">
+   <h1>WEB-APLLICATION DEMO PELAB</h1>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-4">
+ <table>     
+            <tr>
+                    <td style="width: 50%"><b>Học vị</b></td>  
+                    <td><b>Họ và tên</b></td> 
+            </tr>
+            <tr>
+                <td>1. PGS. TS</td>
+                <td>Lê Minh Phương</td>
+            </tr>
+            <tr>
+                <td>2. TS</td>
+                <td>Võ Quế Sơn</td>
+            </tr>
+            <tr>
+                <td>3. TS</td>
+                <td>Nguyễn Đình Tuyên</td>
+            </tr>            
+            <tr>
+                <td>4. Th.S</td>
+                <td>Nguyễn Minh Huy</td>
+            </tr>
+
+	    <tr>
+		<td>5. TS </td>
+		<td>Trương Đình Châu</td>
+	    </tr>
+
+	     <tr> 
+		<td> 6.    </td>
+		<td>Bùi Đức An </td>
+	    </tr>
+
+	<tr>
+		<td> 7.	   </td>
+		<td>Tạ Lê Đình Huy </td>
+	</tr
+
+	<tr>
+		<td> 8.    </td>
+		<td>Võ Thanh Lâm</td>
+	</tr>
+
+	<tr>
+		<td> 9.    </td>
+		<td>Phùng Đức Nghĩa</td>
+	</tr>
+
+
+        </table>
+   <!-- Имена -->
+
+   
+  </div>
+  <div class="col-sm-8">
+   <!-- старый код -->
+<form class = "formstyle" v-on:submit.prevent="send()">
           <div class="input-group mb-3">
               <input type="text" class="form-control inputstyle" v-model="message">
               <div class="input-group-append">
@@ -10,10 +76,29 @@
       </form>
       <button class="btn btn-outline-danger" v-on:click="stop()">Stop</button>
       <button class="btn btn-outline-warning" v-on:click="continuerequest()">Show</button>
-      <p>Message is: {{ message }}</p>
-      <ul>
-        <li v-for="d in data" :key="d.id">{{d.view}}</li>
-      </ul>
+   <!-- ul>li заменяем на: -->
+   <table class="table table-striped" style="table-layout: fixed;overflow: hidden;">
+     <thead>
+       <tr>
+         <th scope="col">Data from:</th>
+         <th scope="col">conductivity</th>
+         <th scope="col">salinity</th>
+       </tr>
+     </thead>
+      <tbody>
+       <tr v-for="d in data" :key="d.id">
+         <td>{{d.from}}</td>
+         <td v-if="d.resp" class="text-center"  colspan="2">{{d.resp}}</td>
+         <td v-if="!d.resp">{{d.c}}</td>
+         <td v-if="!d.resp">{{d.s}}</td>
+       </tr>
+     </tbody>
+   </table>
+  </div>
+ </div>
+</div>
+
+
   </div>  
 </template>
 
@@ -23,10 +108,8 @@
            this.$http.get('/getData').then(response => {
               if(response.body.data && response.body.data.length){
                 let newData = response.body.data.map((dt) => {
-                  return {
-                    view:dt, 
-                    id: this.generatedID++
-                  }
+		return Object.assign(dt , {id: this.generatedID++})
+               
                 })
                 this.data = [].concat(newData.reverse(), this.data);
               }
@@ -62,7 +145,7 @@ export default {
       }
   },
   mounted(){
-   // this.timer = createinterval.call(this);
+   createinterval.call(this);
   }
 }
 </script>
@@ -83,5 +166,17 @@ export default {
 }
 .formstyle {
   width: 800px;
+}
+.w100 {
+ width: 100%;
+}
+.flex-center {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.bkheader {
+background-color: #0795df;
+margin-bottom: 15px;
 }
 </style>

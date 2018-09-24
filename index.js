@@ -54,40 +54,54 @@ app.get('/getData', (req, res) => {
 });
 
 app.post('/someUrl', (req, res) => {
-    res.send(200);
-    let message = req.body.message;
-    let idx = message.indexOf('<cr>');
-    if (~idx) {
-	message = message.slice(0,idx);
-}
-	console.log('MESSAGE: ', message, idx);
-    message = Buffer.from(message, 'ascii');
-    if(~idx){
-	let cr = Buffer.from([13]);
-	message =  Buffer.concat([message, cr], message.length + cr.length);
-} 
-    console.log('some URL', message);
-    changes.push(message.toString('ascii'));
+  res.send(200);
+  let message = req.body.message;
 
+  message = Buffer.from(message, 'ascii');
+
+ let front_wrapp = Buffer.from([ 0x43,  0x2c]);
+ let back_wrapp = Buffer.from([ 0x20,  0x0d]);
+ message =  Buffer.concat([front_wrapp, message, back_wrapp], front_wrapp.length + message.length + back_wrapp.length);
+  console.log('some URL', message);
+  changes.push(message.toString('ascii'));
 });
 //let bitList = message.split(' ').filter(i => i !== '').map(e=> +('0x'+e));
 //let someIndexData = 0;
 //setInterval( ()=> newData.add('TXT txt'+ someIndexData++) , 10000);
 
 server.on("connection", (socket) => {
-    var remoteAddress = socket.remoteAddress + ":" + socket.remotePort;
-    console.log("new client connected %s".green, remoteAddress);
+  var remoteAddress = socket.remoteAddress + ":" + socket.remotePort;
+  console.log("new client connected %s".green, remoteAddress);
 
-    socket.on("data", (d) => {
-        let str = `Data from ${remoteAddress} ${d}`;
-        console.log('Data from %s: %s'.cyan, remoteAddress, d);
-        if(changes.length){
-	    let toDevice = changes.shift();
-	    console.log('toDevice:', toDevice, toDevice.length);
-            socket.write(toDevice, 'ascii');
-        }
-        newData.add(str);
-    });
+  socket.on("data", (d) => {
+    d = d.toString();
+    console.log(remoteAddress, d);
+
+    let isResp = d.match(/[a-zA-Z]/);
+
+    let data
+
+    if (isResp) {
+      data = {
+        from: remoteAddress,
+        resp: d,
+      }
+    } else {
+      let values = d.split(',');
+      data = {
+        from: remoteAddress,
+        c: values[0],
+        s: values[1],
+      }
+    }
+
+      if(changes.length){
+   let toDevice = changes.shift();
+   console.log('toDevice:', toDevice, toDevice.length);
+          socket.write(toDevice, 'ascii');
+      }
+      newData.add(data);
+  });
 
     socket.once("close", () =>{
         console.log('Connection  %s closed'.yellow, remoteAddress);
