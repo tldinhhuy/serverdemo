@@ -4,9 +4,10 @@
  <div class="row bkheader">
   <div class="col-xs-3 col-sm-2">
    <img src="./assets/LogoBK.png" class="w100" alt="">
+   <p class="text-center text-white" >Ho Chi Minh University of Technology </p>
   </div>
   <div class="col-xs-9 col-sm-10 flex-center">
-   <h1>WEB-APLLICATION DEMO PELAB</h1>
+   <h1 class="text-white">WEB-APLLICATION DEMO PELAB</h1>
   </div>
  </div>
  <div class="row">
@@ -19,44 +20,27 @@
             <tr>
                 <td>1. PGS. TS</td>
                 <td>Lê Minh Phương</td>
-            </tr>
-            <tr>
-                <td>2. TS</td>
-                <td>Võ Quế Sơn</td>
-            </tr>
-            <tr>
-                <td>3. TS</td>
-                <td>Nguyễn Đình Tuyên</td>
             </tr>            
             <tr>
-                <td>4. Th.S</td>
+                <td>2. Th.S</td>
                 <td>Nguyễn Minh Huy</td>
             </tr>
-
+	   
 	    <tr>
-		<td>5. TS </td>
-		<td>Trương Đình Châu</td>
-	    </tr>
-
-	     <tr> 
-		<td> 6.    </td>
+		<td> 3. Th.s </td>
+		<td>Nguyễn Hoài Phong </td>
+	    
+		 <tr> 
+		<td> 4.    </td>
 		<td>Bùi Đức An </td>
 	    </tr>
 
 	<tr>
-		<td> 7.	   </td>
+		<td> 5.	   </td>
 		<td>Tạ Lê Đình Huy </td>
 	</tr
+	
 
-	<tr>
-		<td> 8.    </td>
-		<td>Võ Thanh Lâm</td>
-	</tr>
-
-	<tr>
-		<td> 9.    </td>
-		<td>Phùng Đức Nghĩa</td>
-	</tr>
 
 
         </table>
