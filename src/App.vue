@@ -63,6 +63,7 @@
       <!-- <button class="btn btn-outline-danger" v-on:click="stop()">Stop</button>
       <button class="btn btn-outline-warning" v-on:click="continuerequest()">Show</button> -->
    <!-- ul>li заменяем на: -->
+
    <table class="table table-striped" style="table-layout: fixed;overflow: hidden;">
      <thead>
        <tr>
@@ -80,6 +81,21 @@
        </tr>
      </tbody>
    </table>
+
+<table class="table table-striped" style="table-layout: fixed;overflow: hidden;">
+      <thead>
+        <tr>
+          <th>Thiết bị 2</th>
+          <th> 0 </th>
+          <th> 0 </th>
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+         
+        </tr>
+      </tbody>
+    </table>
   </div>
  </div>
 </div>
