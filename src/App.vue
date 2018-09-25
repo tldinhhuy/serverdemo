@@ -98,6 +98,7 @@
                
                 })
                 this.data = [].concat(newData.reverse(), this.data);
+		this.data = this.data.splice(0, 1);
               }
  // get body data
 //  this.someData = response.body;
