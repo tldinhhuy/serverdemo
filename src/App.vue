@@ -4,9 +4,10 @@
  <div class="row bkheader">
   <div class="col-xs-3 col-sm-2">
    <img src="./assets/LogoBK.png" class="w100" alt="">
+   <p class="text-center text-white">Ho Chi Minh University of Technology</p>
   </div>
   <div class="col-xs-9 col-sm-10 flex-center">
-   <h1>WEB-APLLICATION DEMO PELAB</h1>
+   <h1 class="text-white">WEB-APLLICATION DEMO PELAB</h1>
   </div>
  </div>
  <div class="row">
@@ -51,6 +52,7 @@
   <div class="col-sm-8">
    <!-- старый код -->
 <form class = "formstyle" v-on:submit.prevent="send()">
+    <p>Cài đặt thời gian lấy mẫu (s)</p>
           <div class="input-group mb-3">
               <input type="text" class="form-control inputstyle" v-model="message">
               <div class="input-group-append">
@@ -58,20 +60,20 @@
               </div>
             </div>            
       </form>
-      <button class="btn btn-outline-danger" v-on:click="stop()">Stop</button>
-      <button class="btn btn-outline-warning" v-on:click="continuerequest()">Show</button>
+      <!-- <button class="btn btn-outline-danger" v-on:click="stop()">Stop</button>
+      <button class="btn btn-outline-warning" v-on:click="continuerequest()">Show</button> -->
    <!-- ul>li заменяем на: -->
    <table class="table table-striped" style="table-layout: fixed;overflow: hidden;">
      <thead>
        <tr>
          <th scope="col">Thiết bị:</th>
-         <th scope="col">Độ dẫn điện</th>
-         <th scope="col">Độ mặn</th>
+         <th scope="col">Độ dẫn điện (uS)</th>
+         <th scope="col">Độ mặn (‰)</th>
        </tr>
      </thead>
       <tbody>
        <tr v-for="d in data" :key="d.id">
-         <td>{{d.from}}</td>
+         <td>Thiết bị 1</td>
          <td v-if="d.resp" class="text-center"  colspan="2">{{d.resp}}</td>
          <td v-if="!d.resp">{{d.c}}</td>
          <td v-if="!d.resp">{{d.s}}</td>
