@@ -4,10 +4,9 @@
  <div class="row bkheader">
   <div class="col-xs-3 col-sm-2">
    <img src="./assets/LogoBK.png" class="w100" alt="">
-   <p class="text-center text-white" >Ho Chi Minh University of Technology </p>
   </div>
   <div class="col-xs-9 col-sm-10 flex-center">
-   <h1 class="text-white">WEB-APLLICATION DEMO PELAB</h1>
+   <h1>WEB-APLLICATION DEMO PELAB</h1>
   </div>
  </div>
  <div class="row">
@@ -20,26 +19,27 @@
             <tr>
                 <td>1. PGS. TS</td>
                 <td>Lê Minh Phương</td>
-            </tr>            
+            </tr>                 
             <tr>
                 <td>2. Th.S</td>
                 <td>Nguyễn Minh Huy</td>
             </tr>
-	   
-	    <tr>
-		<td> 3. Th.s </td>
+
+	     <tr> 
+		<td> 3. Th.S  </td>
 		<td>Nguyễn Hoài Phong </td>
-	    
-		 <tr> 
-		<td> 4.    </td>
-		<td>Bùi Đức An </td>
 	    </tr>
 
 	<tr>
-		<td> 5.	   </td>
-		<td>Tạ Lê Đình Huy </td>
-	</tr
-	
+		<td> 4.    </td>
+		<td>Tạ Lê Đình Huy</td>
+  </tr>
+  
+  <tr>
+    <td> 5.    </td>
+    <td>Bùi Đức An</td>
+  </tr>
+
 
 
 
@@ -64,9 +64,9 @@
    <table class="table table-striped" style="table-layout: fixed;overflow: hidden;">
      <thead>
        <tr>
-         <th scope="col">Data from:</th>
-         <th scope="col">conductivity</th>
-         <th scope="col">salinity</th>
+         <th scope="col">Thiết bị:</th>
+         <th scope="col">Độ dẫn điện</th>
+         <th scope="col">Độ mặn</th>
        </tr>
      </thead>
       <tbody>
