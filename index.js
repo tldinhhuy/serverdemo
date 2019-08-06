@@ -57,13 +57,14 @@ app.post('/someUrl', (req, res) => {
   res.send(200);
   let message = req.body.message;
 
-  message = Buffer.from(message, 'ascii');
+  //message = Buffer.from(message, 'ascii');
 
- let front_wrapp = Buffer.from([ 0x43,  0x2c]);
- let back_wrapp = Buffer.from([ 0x20,  0x0d]);
- message =  Buffer.concat([front_wrapp, message, back_wrapp], front_wrapp.length + message.length + back_wrapp.length);
-  console.log('some URL', message);
-  changes.push(message.toString('ascii'));
+  //Старый буффер
+//  let front_wrapp = Buffer.from([ 0x43,  0x2c]);
+//  let back_wrapp = Buffer.from([ 0x20,  0x0d]);
+//  message =  Buffer.concat([front_wrapp, message, back_wrapp], front_wrapp.length + message.length + back_wrapp.length);
+//   console.log('some URL', message);
+//   changes.push(message.toString('ascii'));
 });
 //let bitList = message.split(' ').filter(i => i !== '').map(e=> +('0x'+e));
 //let someIndexData = 0;
