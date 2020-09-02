@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "bootstrap-vue": "^2.0.0-rc.11",
+    "bootstrap-vue": "^2.0.0-rc.12",
     "encoding": "^0.1.12",
     "underscore": "^1.9.1",
     "vue": "^2.5.2",
